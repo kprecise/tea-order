@@ -1,11 +1,11 @@
 # Front End Starter Pack (React, Webpack 4, Reactstrap, SASS, Slick and Autoprefixer)
 This is a customised front end boilerplate using Webpack 4
 
-## Webpack (Compiled CSS with autoprefixer)
+## Webpack (Compiled CSS with Autoprefixer)
 This is already configured to compile SASS to CSS and to apply autoprefixing to the CSS
 
 ## Reactstrap
-Implementation of reactstrap for a responsive layout
+Implementation of Reactstrap (Bootstrap 4) for a responsive layout
 
 ## React Components
 Components for injecting custom fontawesome isons and running a slick carousel instance are in place
