@@ -1,7 +1,7 @@
 {
   "name": "react_webpack_starter",
   "version": "1.0.0",
-  "description": "Boilerplate for React apps",
+  "description": "Webpack / React Boilerplate for Front End Development",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --hot",
@@ -13,6 +13,7 @@
     "autoprefixer": "^8.6.3",
     "bootstrap": "^4.1.1",
     "extract-text-webpack-plugin": "^3.0.2",
+    "hoek": "^5.0.3",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
