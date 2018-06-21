@@ -1,0 +1,14 @@
+.slick-slider {
+  background: lightblue;
+  min-height: 200px;
+  text-align: center; }
+
+.fontawesome i {
+  padding: 0 12px 0 0; }
+
+.container h1 {
+  margin-bottom: 20px; }
+
+.container .slick-container {
+  min-height: 400px; }
+
