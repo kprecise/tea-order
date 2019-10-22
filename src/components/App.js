@@ -1,28 +1,71 @@
 import React from "react";
-import SimpleSlider from './slick';
-import Icon from './fontawesome';
+import axios from 'axios';
+import Header from './header';
+import Nav from './nav';
+import Content from './content';
 import { Container, Row, Col } from 'reactstrap';
 import "./index.css";
 
-const App = () => (
-    <Container>
-        <Row>
-            <Col xs="12">
-                <h1>Webpack Front End Starter</h1> 
-            </Col>
-        </Row>
-        <Row>
-            <Col xs="12" sm="6">       
-                <h2>Slick</h2>
-                <SimpleSlider />
-             </Col>
-            <Col xs="12" sm="6">  
-                <h2>Fontawesome Icons</h2>
-                <Icon icon="facebook"/>
-                <Icon icon="twitter"/>            
-            </Col>
-        </Row>
-    </Container>
-);
-  
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            componentMounted: false,
+            pageReady: false
+        }
+    }
+
+    componentWillMount() {
+     
+    }
+
+    componentDidMount() {
+        axios.get(`https://jsonplaceholder.typicode.com/albums/1/photos`)
+        .then(res => {
+          const photos = res.data;
+          this.setState({ photoAlbums: photos });
+          console.log(this.state)
+        })        
+        setTimeout(
+            function() {
+                this.setState({
+                    pageReady: true
+                })
+            }
+            .bind(this),
+            1000
+        );
+    }
+
+    componentWillUnmount(){
+        console.log('component did unmount')
+    }    
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('prevProps', prevProps, 'prevState', prevState, snapshot)
+    }    
+
+    render() {
+        const pageIsReady = this.state.pageReady;
+        return (
+            <Container>
+                <Row>
+                    <Col xs="12">
+                        <Header />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs="12" sm="6">       
+                        <Nav />
+                    </Col>
+                    <Col xs="12" sm="6">  
+                        { pageIsReady ? <Content photoAlbums={this.state.photoAlbums} /> : <Content loading="Content is loading........." />  }
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
+}
+ 
 export default App;

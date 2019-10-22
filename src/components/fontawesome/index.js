@@ -8,7 +8,7 @@ const icons = {
 
 const Icon = props => (
   <div className="fontawesome">
-    <i className={icons[props.icon]}></i>
+    <i className={icons[props.type]}></i>
   </div>
 );
 
