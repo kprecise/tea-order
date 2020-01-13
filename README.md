@@ -10,12 +10,20 @@ This is using React, Webpack, Reactstrap, SASS and Cypress.
 # Install dependencies
 npm install
 
-# Serve on localhost:3000
+# Serve on localhost:8080
 npm run dev
 
 # Build for production
 npm run build
 ```
+
+## Cypress
+
+```
+# Run
+node_modules/.bin/cypress open
+``` 
+
 ### Author
 
 Kyri Kyriacou
