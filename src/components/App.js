@@ -1,95 +1,75 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Input, Button, FormGroup } from 'reactstrap';
+import { Container, Row, Col, Form, Input, Button, FormGroup, Label, Alert } from 'reactstrap';
 
 import "./index.scss";
 
 const App = () => {
-    const customerData = [
-        {
-            id: 'CUST-0014124',
-            name: "Peter Rogers",
-            type: "standard"
-        },
-        {
-            id: 'CUST-0013781',
-            name: "John Williams",
-            type: "premium"
-        }                  
-    ]
-    const [results, setResults] = useState(false);
-    const [formStatus, setFormStatus] = useState(false);
-    const [displayResults, setDisplayResults] = useState({id: '', name: '', type: ''});
+    const [teaOrder, setTeaOrder] = useState(false)
+    const [teaReady, setTeaReady] = useState(false)
+    const [currentOrder, setCurrentOrder] = useState('')
 
-    const setCustomerType = (customerType) => {
+    const placeOrder = (milk, sugar) => {
         event.preventDefault();
-        if (customerType !== 'none') {
-            setFormStatus(true)
-            const loggedInCustomer = customerData.filter(customer => customer.type === customerType);
-            const {
-                id,
-                name,
-                type
-            } = loggedInCustomer[0];
-            setResults(true);
-            setDisplayResults({id, name, type});
-            getResults();
-        } else {
-            setFormStatus(false);
-        }
+        setTeaReady(false);
+        const newOrder = orderTea(milk, sugar); newOrder;
     }
 
-    const getResults = () => {
-        const isPremium = displayResults.type === "premium"
-        return (
-            <div id="results">
-                <h2>Details</h2>
-                <strong>Customer No:</strong> : {displayResults.id}<br/>
-                <strong>Name</strong> : {displayResults.name}<br/>
-                <strong>Type</strong>: {displayResults.type}
-                <hr/>
-                <h2>Offers</h2>
-                {isPremium ? 
-                    <div>
-                        <strong>Premium</strong><br />
-                        <ul>
-                            <li>Offer 2, Offer 7, Offer 82</li>
-                        </ul>
-                    </div> 
-                    : 
-                    <div>
-                        <strong>Standard</strong><br />
-                        <ul>
-                            <li id="offer">Offer 1</li>
-                        </ul>
-                    </div>
-                }
-            </div>  
-        )
-    }  
+    const orderTea = (milkPref, sugarPref) => {
+        setTeaOrder(true);
+        function makeTea() {
+            setTeaOrder(false);
+            setTeaReady(true);
+            setCurrentOrder(`Your tea with ${milkPref ? 'milk' : 'no milk' } and ${sugarPref} sugars is ready!`)
+        }
+        setTimeout(function(){ 
+            makeTea();
+        }, 5000);
+    }
+
     return (
         <Container>
             <Row>
                 <Col>
-                    <h1>Customer</h1>
-                    <Form id="form" onSubmit={event => setCustomerType(event.target.select.value)}>
+                    <h1>Order Tea</h1>
+                    <p>Please tell us how you like your tea:</p>
+                    <Form id="form" onSubmit={event => placeOrder(event.target.milk.value, event.target.sugar.value)}>
+                        <FormGroup check>
+                            <Label check>
+                                <Input type="radio" name="milk" value="false" defaultChecked>No</Input>{' '}
+                                I do not want any milk
+                            </Label>
+                        </FormGroup>
+                        <FormGroup check>
+                            <Label check>
+                                <Input type="radio" name="milk" value="true">Yes</Input>{' '}
+                                I would like milk please
+                            </Label>
+                        </FormGroup>                 
                         <FormGroup>
-                            <Input type="select" id="select" name="select">
-                                <option value="none">Choose one</option>
-                                <option name="standard" id="standard" value="standard">Standard</option>
-                                <option name="premium" id="premium" value="premium">Premium</option>
+                            <Label for="sugar">How many sugars?</Label>
+                            <Input type="select" id="sugar" name="sugar">
+                                <option value="no">No sugars</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </Input>
                         </FormGroup>
                         <FormGroup>
-                            <Button color="primary" id="form-submit">Submit</Button>
+                            <Button>Order Tea</Button>
                         </FormGroup>
                     </Form>
-                    {formStatus ?
-                        <div id="contentArea">
-                            {results ? getResults(displayResults) : 'Please select an option'}
-                        </div> : ''
-                    }
                 </Col>
             </Row>
+            { teaOrder ? 
+            <Row>
+                <Col>
+                    <Alert color="info">We're making your tea. It sholdn't take too long.....</Alert>
+                </Col>
+            </Row> : ''
+            }
+            { teaReady ? <Alert color="success">{currentOrder} </Alert> : '' }
         </Container>
     )
 }

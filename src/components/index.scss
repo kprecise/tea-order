@@ -1,12 +1,34 @@
 ::placeholder {
   color: gray;
 }
-
-.container {
-  margin: 1rem 0;
-  #contentArea {
-    background: #FCF9F9;
-    border: 1px #ccc solid;
-    padding: 2rem 1rem;
+body {
+  h1 {
+    color: darkred;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-size: 4rem;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+  .container {
+    margin: 1rem 2rem;
+    form {
+      margin: 2rem 0;
+      .form-group {
+        margin: 1rem 0;
+      }
+      .form-check {
+        margin: 0.5rem 0;
+      } 
+      #sugar {
+        width: auto;
+        margin-left: 0.5rem;
+        display: inline;
+      }
+      button {
+        background: darkred;
+      }
+    }
   }
 }

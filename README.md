@@ -1,8 +1,8 @@
-# Customer Form Selection
-The purpose of this app is to display associated offers for a customer based on a form dropdown selection and test the expected results using Cypress.
+# Tea Order App
+A very basic app that allows a user to order a tea. It dekonstrates the use of `local scope/global scope` functions. An instance, `newOrder`, of the function `orderTea()` is generated. `OrderTea()` registers a tea order and than calls it's inner function within it's scope `makeTea()` which subsequently makes the tea and confirms this via `react hooks`. 
 
 ## Technologies
-This is using React, Webpack, Reactstrap, SASS and Cypress.
+This is using React, Webpack, Reactstrap, and SASS.
 
 ## Quick Start
 
@@ -16,13 +16,6 @@ npm run dev
 # Build for production
 npm run build
 ```
-
-## Cypress
-
-```
-# Run
-node_modules/.bin/cypress open
-``` 
 
 ### Author
 
