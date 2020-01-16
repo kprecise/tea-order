@@ -1,5 +1,5 @@
 # Tea Order App
-A very basic app that allows a user to order a tea. It dekonstrates the use of `nested scopes/closures.` An instance, `newOrder`, of the function `orderTea()` is generated. `OrderTea()` registers a tea order and than calls it's inner function within it's scope `makeTea()` which subsequently makes the tea and confirms this via `react hooks`. 
+A very basic app that allows a user to order a tea. It demonstrates the use of `nested scopes/closures.` An instance, `newOrder`, of the function `orderTea()` is generated. `OrderTea()` registers a tea order and than calls it's inner function within it's scope `makeTea()` which subsequently makes the tea and confirms this via `react hooks`. 
 
 ## Technologies
 This is using React, Webpack, Reactstrap, and SASS.
